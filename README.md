@@ -1,6 +1,5 @@
 # shorty
 
-Description
 Create shortlinks for long urls that everyone remembers
 
 - Steps to run the project:
