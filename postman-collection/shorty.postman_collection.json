@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "ad6d6a20-45ca-4057-b157-c570307704cd",
+		"name": "shorty",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8887696"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"jwt\", pm.response.json().token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"sohail@doe.com\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"John\",\n    \"email\": \"john@doe.com\",\n    \"password\": \"123456\",\n    \"password_confirmation\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users/signup",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/users/logout",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new shortlink",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"shortlink\": \"json-minify\",\n    \"description\": \"minifies json object\",\n    \"url\": \"https://codebeautify.org/jsonminifier\",\n    \"tags\": [\n        \"json\",\n        \"min\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/shortlinks/create",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"shortlinks",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all shortlinks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/shortlinks?sort_by=created_at&sort_type=asc",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"shortlinks"
+					],
+					"query": [
+						{
+							"key": "sort_by",
+							"value": "created_at"
+						},
+						{
+							"key": "sort_type",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete shortlink by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/shortlinks/88f3d7c2-e74e-432b-87dd-e12951830977",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"shortlinks",
+						"88f3d7c2-e74e-432b-87dd-e12951830977"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search shortlinks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/shortlinks/search?input=backend",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"shortlinks",
+						"search"
+					],
+					"query": [
+						{
+							"key": "input",
+							"value": "backend"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
